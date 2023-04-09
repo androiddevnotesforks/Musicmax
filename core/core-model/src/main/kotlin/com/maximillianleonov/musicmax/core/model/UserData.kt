@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Maximillian Leonov
+ * Copyright 2023 Maximillian Leonov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,8 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.core.datastore.util
+package com.maximillianleonov.musicmax.core.model
 
-import androidx.datastore.preferences.core.intPreferencesKey
-
-internal object Constants {
-    private const val PLAYING_QUEUE_INDEX_NAME = "playing_queue_index"
-    internal val PLAYING_QUEUE_INDEX = intPreferencesKey(PLAYING_QUEUE_INDEX_NAME)
-}
+data class UserData(
+    val playingQueueIndex: Int
+)

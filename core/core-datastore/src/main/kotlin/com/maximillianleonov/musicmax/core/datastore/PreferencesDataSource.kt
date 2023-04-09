@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Maximillian Leonov
+ * Copyright 2023 Maximillian Leonov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,22 +17,24 @@
 package com.maximillianleonov.musicmax.core.datastore
 
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import com.maximillianleonov.musicmax.core.datastore.util.Constants.PLAYING_QUEUE_INDEX
+import com.maximillianleonov.musicmax.core.model.UserData
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class PreferencesDataStoreDataSource @Inject constructor(
-    private val dataStore: DataStore<Preferences>
+class PreferencesDataSource @Inject constructor(
+    private val userPreferences: DataStore<UserPreferences>
 ) {
-    fun getPlayingQueueIndex() = dataStore.data.map { preferences ->
-        preferences[PLAYING_QUEUE_INDEX] ?: 0
+    val userData = userPreferences.data.map { preferences ->
+        UserData(
+            playingQueueIndex = preferences.playingQueueIndex
+        )
     }
 
-    suspend fun setPlayingQueueIndex(index: Int) {
-        dataStore.edit { preferences ->
-            preferences[PLAYING_QUEUE_INDEX] = index
+    suspend fun setPlayingQueueIndex(playingQueueIndex: Int) {
+        userPreferences.updateData {
+            it.copy {
+                this.playingQueueIndex = playingQueueIndex
+            }
         }
     }
 }
