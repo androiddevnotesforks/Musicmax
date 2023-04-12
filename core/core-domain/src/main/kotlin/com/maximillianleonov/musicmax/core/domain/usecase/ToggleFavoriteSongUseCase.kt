@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.core.model
+package com.maximillianleonov.musicmax.core.domain.usecase
 
-data class UserData(
-    val playingQueueIds: List<String>,
-    val playingQueueIndex: Int,
-    val favoriteSongs: Set<String>
-)
+import com.maximillianleonov.musicmax.core.domain.repository.SettingsRepository
+import javax.inject.Inject
+
+class ToggleFavoriteSongUseCase @Inject constructor(private val settingsRepository: SettingsRepository) {
+    suspend operator fun invoke(id: String, isFavorite: Boolean) =
+        settingsRepository.toggleFavoriteSong(id, isFavorite)
+}

@@ -27,7 +27,8 @@ class PreferencesDataSource @Inject constructor(
     val userData = userPreferences.data.map { preferences ->
         UserData(
             playingQueueIds = preferences.playingQueueIdsList,
-            playingQueueIndex = preferences.playingQueueIndex
+            playingQueueIndex = preferences.playingQueueIndex,
+            favoriteSongs = preferences.favoriteSongIdsMap.keys
         )
     }
 
@@ -46,6 +47,18 @@ class PreferencesDataSource @Inject constructor(
         userPreferences.updateData {
             it.copy {
                 this.playingQueueIndex = playingQueueIndex
+            }
+        }
+    }
+
+    suspend fun toggleFavoriteSong(id: String, isFavorite: Boolean) {
+        userPreferences.updateData {
+            it.copy {
+                if (isFavorite) {
+                    favoriteSongIds.put(id, true)
+                } else {
+                    favoriteSongIds.remove(id)
+                }
             }
         }
     }
