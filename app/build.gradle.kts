@@ -20,6 +20,7 @@ plugins {
     id("musicmax.android.hilt")
     id("musicmax.android.lint")
     id("musicmax.android.signing-config")
+    id("musicmax.admob-config.provider")
 }
 
 android {
@@ -59,4 +60,5 @@ dependencies {
     implementation(libs.androidx.profileinstaller)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.play.services.ads)
 }
