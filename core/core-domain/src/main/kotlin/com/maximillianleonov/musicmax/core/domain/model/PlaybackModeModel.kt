@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Maximillian Leonov
+ * Copyright 2023 Maximillian Leonov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,6 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.core.media.notification.common
+package com.maximillianleonov.musicmax.core.domain.model
 
-object MusicCommands {
-    const val PLAYBACK_MODE = "playback_mode"
-    const val PLAYBACK_MODE_REPEAT = "playback_mode_repeat"
-    const val PLAYBACK_MODE_REPEAT_ONE = "playback_mode_repeat_one"
-    const val PLAYBACK_MODE_SHUFFLE = "playback_mode_shuffle"
-
-    const val FAVORITE = "favorite"
-    const val FAVORITE_ON = "favorite_on"
-    const val FAVORITE_OFF = "favorite_off"
-}
+enum class PlaybackModeModel { REPEAT, REPEAT_ONE, SHUFFLE }
