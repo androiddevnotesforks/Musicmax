@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 Maximillian Leonov
+ * Copyright 2023 Maximillian Leonov
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,11 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.core.media.notification.common
+package com.maximillianleonov.musicmax.core.domain.usecase
 
-object MusicCommands {
-    const val REPEAT_SHUFFLE = "repeat_shuffle"
-    const val REPEAT = "repeat"
-    const val REPEAT_ONE = "repeat_one"
-    const val SHUFFLE = "shuffle"
+import com.maximillianleonov.musicmax.core.domain.repository.SettingsRepository
+import javax.inject.Inject
 
-    const val FAVORITE = "favorite"
-    const val FAVORITE_ON = "favorite_on"
-    const val FAVORITE_OFF = "favorite_off"
+class GetFavoriteSongIdsUseCase @Inject constructor(private val settingsRepository: SettingsRepository) {
+    operator fun invoke() = settingsRepository.favoriteSongs
 }

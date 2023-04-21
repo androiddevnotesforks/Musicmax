@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright 2022 Maximillian Leonov
+     Copyright 2023 Maximillian Leonov
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -14,14 +14,13 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <string name="repeat">Repeat</string>
-    <string name="repeat_one">Repeat one</string>
-    <string name="shuffle">Shuffle</string>
-    <string name="skip_previous">Skip to previous</string>
-    <string name="play">Play</string>
-    <string name="pause">Pause</string>
-    <string name="skip_next">Skip to next</string>
-    <string name="favorite_add">Add to favorites</string>
-    <string name="favorite_remove">Remove from favorites</string>
-</resources>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:tint="#6750A4"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M13.35,20.13c-0.76,0.69 -1.93,0.69 -2.69,-0.01l-0.11,-0.1C5.3,15.27 1.87,12.16 2,8.28c0.06,-1.7 0.93,-3.33 2.34,-4.29 2.64,-1.8 5.9,-0.96 7.66,1.1 1.76,-2.06 5.02,-2.91 7.66,-1.1 1.41,0.96 2.28,2.59 2.34,4.29 0.14,3.88 -3.3,6.99 -8.55,11.76l-0.1,0.09z" />
+</vector>
