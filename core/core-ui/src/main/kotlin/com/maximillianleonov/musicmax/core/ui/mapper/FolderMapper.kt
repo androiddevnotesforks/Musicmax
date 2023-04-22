@@ -14,24 +14,13 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.feature.library
+package com.maximillianleonov.musicmax.core.ui.mapper
 
-import com.maximillianleonov.musicmax.core.model.Album
-import com.maximillianleonov.musicmax.core.model.Artist
+import com.maximillianleonov.musicmax.core.domain.model.FolderModel
+import com.maximillianleonov.musicmax.core.domain.model.SongModel
 import com.maximillianleonov.musicmax.core.model.Folder
 
-internal sealed interface LibraryUiState {
-    object Loading : LibraryUiState
-
-    data class ArtistType(
-        val artist: Artist
-    ) : LibraryUiState
-
-    data class AlbumType(
-        val album: Album
-    ) : LibraryUiState
-
-    data class FolderType(
-        val folder: Folder
-    ) : LibraryUiState
-}
+fun FolderModel.asFolder() = Folder(
+    name = name,
+    songs = songs.map(SongModel::asSong)
+)

@@ -14,24 +14,11 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.feature.library
+package com.maximillianleonov.musicmax.core.domain.usecase
 
-import com.maximillianleonov.musicmax.core.model.Album
-import com.maximillianleonov.musicmax.core.model.Artist
-import com.maximillianleonov.musicmax.core.model.Folder
+import com.maximillianleonov.musicmax.core.domain.repository.MediaRepository
+import javax.inject.Inject
 
-internal sealed interface LibraryUiState {
-    object Loading : LibraryUiState
-
-    data class ArtistType(
-        val artist: Artist
-    ) : LibraryUiState
-
-    data class AlbumType(
-        val album: Album
-    ) : LibraryUiState
-
-    data class FolderType(
-        val folder: Folder
-    ) : LibraryUiState
+class GetFoldersUseCase @Inject constructor(private val mediaRepository: MediaRepository) {
+    operator fun invoke() = mediaRepository.folders
 }

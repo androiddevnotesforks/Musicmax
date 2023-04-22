@@ -14,24 +14,9 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.feature.library
+package com.maximillianleonov.musicmax.core.model
 
-import com.maximillianleonov.musicmax.core.model.Album
-import com.maximillianleonov.musicmax.core.model.Artist
-import com.maximillianleonov.musicmax.core.model.Folder
-
-internal sealed interface LibraryUiState {
-    object Loading : LibraryUiState
-
-    data class ArtistType(
-        val artist: Artist
-    ) : LibraryUiState
-
-    data class AlbumType(
-        val album: Album
-    ) : LibraryUiState
-
-    data class FolderType(
-        val folder: Folder
-    ) : LibraryUiState
-}
+data class Folder(
+    val name: String,
+    val songs: List<Song>
+)

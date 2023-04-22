@@ -14,24 +14,8 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.feature.library
+package com.maximillianleonov.musicmax.core.mediastore.util
 
-import com.maximillianleonov.musicmax.core.model.Album
-import com.maximillianleonov.musicmax.core.model.Artist
-import com.maximillianleonov.musicmax.core.model.Folder
+import java.io.File
 
-internal sealed interface LibraryUiState {
-    object Loading : LibraryUiState
-
-    data class ArtistType(
-        val artist: Artist
-    ) : LibraryUiState
-
-    data class AlbumType(
-        val album: Album
-    ) : LibraryUiState
-
-    data class FolderType(
-        val folder: Folder
-    ) : LibraryUiState
-}
+internal fun String.asFolder() = File(this).parentFile?.name.orEmpty()
