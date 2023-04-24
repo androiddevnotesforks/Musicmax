@@ -14,13 +14,12 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.core.model
+package com.maximillianleonov.musicmax.core.domain.usecase
 
-data class UserData(
-    val playingQueueIds: List<String>,
-    val playingQueueIndex: Int,
-    val playbackMode: PlaybackMode,
-    val favoriteSongs: Set<String>,
-    val darkThemeConfig: DarkThemeConfig,
-    val useDynamicColor: Boolean
-)
+import com.maximillianleonov.musicmax.core.domain.repository.SettingsRepository
+import javax.inject.Inject
+
+class SetDynamicColorUseCase @Inject constructor(private val settingsRepository: SettingsRepository) {
+    suspend operator fun invoke(useDynamicColor: Boolean) =
+        settingsRepository.setDynamicColor(useDynamicColor)
+}

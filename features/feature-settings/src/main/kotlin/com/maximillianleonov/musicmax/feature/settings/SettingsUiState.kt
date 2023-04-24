@@ -14,13 +14,20 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.core.model
+package com.maximillianleonov.musicmax.feature.settings
 
-data class UserData(
-    val playingQueueIds: List<String>,
-    val playingQueueIndex: Int,
-    val playbackMode: PlaybackMode,
-    val favoriteSongs: Set<String>,
-    val darkThemeConfig: DarkThemeConfig,
-    val useDynamicColor: Boolean
-)
+import android.net.Uri
+import com.maximillianleonov.musicmax.core.model.DarkThemeConfig
+
+sealed interface SettingsUiState {
+    object Loading : SettingsUiState
+
+    data class Success(
+        val supportsDynamicTheming: Boolean,
+        val useDynamicColor: Boolean,
+        val darkThemeConfig: DarkThemeConfig,
+        val repoUrl: Uri,
+        val privacyPolicyUrl: Uri,
+        val version: String,
+    ) : SettingsUiState
+}
