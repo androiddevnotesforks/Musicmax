@@ -14,17 +14,12 @@
  * limitations under the License.
  */
 
-package com.maximillianleonov.musicmax.core.model
+package com.maximillianleonov.musicmax.core.domain.usecase
 
-data class UserData(
-    val playingQueueIds: List<String>,
-    val playingQueueIndex: Int,
-    val playbackMode: PlaybackMode,
-    val sortOrder: SortOrder,
-    val sortBy: SortBy,
+import com.maximillianleonov.musicmax.core.domain.repository.SettingsRepository
+import com.maximillianleonov.musicmax.core.model.SortBy
+import javax.inject.Inject
 
-    val favoriteSongs: Set<String>,
-
-    val darkThemeConfig: DarkThemeConfig,
-    val useDynamicColor: Boolean
-)
+class SetSortByUseCase @Inject constructor(private val settingsRepository: SettingsRepository) {
+    suspend operator fun invoke(sortBy: SortBy) = settingsRepository.setSortBy(sortBy)
+}
